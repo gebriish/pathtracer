@@ -2,6 +2,7 @@
 
 struct Image
 {
-    int width, height, channels;
+    int width, height;
+    unsigned int channels;
     float* data = nullptr;
 };

@@ -1,7 +1,6 @@
-#include <iostream>
-
 #include "image.h"
 #include "io.h"
+#include "log.h"
 
 int main()
 {
@@ -11,12 +10,15 @@ int main()
   {
     for(int j=0; j<640; j++)
     {
-      image_write_pixel(img, j, i, 0, j/640.0f);
-      image_write_pixel(img, j, i, 1, i/640.0f);
-      image_write_pixel(img, j, i, 2, 0.0);
+      PixelHandle pixel = image_get_pixel_handle(img, j, i);
+      image_pixel_write(pixel, 0, j / 640.0f);
+      image_pixel_write(pixel, 1, i / 640.0f);
+      image_pixel_write(pixel, 2, 0.0f);
     }
   }
+
+  if(!io_image_write("output.png", img)) 
+    LOG_SVER("failed to write image\n");
   
-  io_image_write("output.png", img);
   image_free(img);
 }
