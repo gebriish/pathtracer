@@ -17,11 +17,7 @@ project "Renderer"
 		"src/**.cpp",
 		"src/**.h",
 	}
-
-	includedirs 
-	{
-	}
-
+	
 	optimize "speed"
 
 filter "configurations:Debug"
@@ -36,3 +32,4 @@ filter "configurations:Release"
 	defines {
 		"NDEBUG"
 	}
+
